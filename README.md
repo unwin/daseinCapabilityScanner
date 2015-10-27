@@ -35,7 +35,7 @@ Step 2:
 You will need to copy GridviewScroll.css, gridviewScroll.min.js, and the Images directory and its content to the directory where you end up homing daseinCapabilities.html
 
 
-<A HREF="daseinCapabilities.html">daseinCapabilities.html</A>
+<A HREF="http://htmlpreview.github.io/?https://github.com/unwin/daseinCapabilityScanner/blob/master/daseinCapabilities.html">daseinCapabilities.html</A>
 
 GridViewScroll taken from http://gridviewscroll.aspcity.idv.tw/
 ---------------------------------------------------------------
