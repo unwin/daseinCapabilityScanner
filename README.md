@@ -34,12 +34,14 @@ Clone the dasein repo's you want to include in the capability scan into the same
 
 
 ##### Step 2:
+```
 ./capaoilityScanner.pl > daseinCapabilities.html
+```
 
 You will need to copy GridviewScroll.css, gridviewScroll.min.js, and the Images directory and its content to the directory where you end up homing daseinCapabilities.html
 
 
-<A HREF="http://htmlpreview.github.io/?https://github.com/unwin/daseinCapabilityScanner/blob/master/daseinCapabilities.html">daseinCapabilities.html</A>
+##### Example output: <A HREF="http://htmlpreview.github.io/?https://github.com/unwin/daseinCapabilityScanner/blob/master/daseinCapabilities.html">daseinCapabilities.html</A>
 
 GridViewScroll taken from http://gridviewscroll.aspcity.idv.tw/
 ---------------------------------------------------------------
