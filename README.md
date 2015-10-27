@@ -45,6 +45,7 @@ You will need to copy GridviewScroll.css, gridviewScroll.min.js, and the Images 
 
 GridViewScroll taken from http://gridviewscroll.aspcity.idv.tw/
 ---------------------------------------------------------------
+```
 /*
  * GridViewScroll with jQuery v0.9.6.8
  * http://gridviewscroll.aspcity.idv.tw/
@@ -64,3 +65,4 @@ GridViewScroll taken from http://gridviewscroll.aspcity.idv.tw/
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+```
