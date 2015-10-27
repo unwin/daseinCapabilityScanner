@@ -1,0 +1,3473 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+Dasein Capabilities
+</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="gridviewScroll.min.js"></script>
+    <link href="GridviewScroll.css" rel="stylesheet" />
+    <style type="text/css">
+        BODY,TD {
+            font-family: Tahoma, Arial, Verdana;
+            font-weight: normal;
+            font-size: 12px;
+            color: #333333;
+        }
+        .form-wrapper {
+	    background-color: #F1F1F1;
+	    border-color: #CCCCCC;
+	    border-radius: 8px 8px 8px 8px;
+	    border-style: solid;
+	    border-width: 1px;
+	    padding: 10px 10px 10px 10px;
+            width: 720px;
+        }
+    </style>
+</head>
+<body>
+<H2>BlobStoreCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="BlobStoreCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsNestedBuckets</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsPublicSharing</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsRootObjects</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getAccountNumber</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>cloud.getContext().getAccountNumber()</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getBucketNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(3, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][_.-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-', '_', '.')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.limitedToLatin1()<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.'})</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.limitedToLatin1()<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.'})</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.limitedToLatin1()<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.'})</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaxBuckets</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Integer.MAX_VALUE -1</TD>
+      <TD>MAX_BUCKETS</TD>
+      <TD>MAX_BUCKETS</TD>
+      <TD></TD>
+      <TD>MAX_BUCKETS</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Storage<Byte><BR/>getMaxObjectSize</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>(Storage<org.dasein.util.uom.storage.Byte>)new Storage<Gigabyte>(4L, Storage.GIGABYTE).convertTo(Storage.BYTE)</TD>
+      <TD>MAX_OBJECT_SIZE</TD>
+      <TD>MAX_OBJECT_SIZE</TD>
+      <TD></TD>
+      <TD>MAX_OBJECT_SIZE</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaxObjectsPerBucket</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Integer.MAX_VALUE -1</TD>
+      <TD>MAX_OBJECTS</TD>
+      <TD>MAX_OBJECTS</TD>
+      <TD></TD>
+      <TD>MAX_OBJECTS</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getObjectNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getStrictInstance(1, 255)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.limitedToLatin1()<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.', ',', '#', '+'})</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.limitedToLatin1()<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.', ',', '#', '+'})</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.limitedToLatin1()<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.', ',', '#', '+'})</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForBucket</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"Buckets"</TD>
+      <TD>"bucket"</TD>
+      <TD>"bucket"</TD>
+      <TD></TD>
+      <TD>"bucket"</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForObject</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"Objects"</TD>
+      <TD>"object"</TD>
+      <TD>"object"</TD>
+      <TD></TD>
+      <TD>"object"</TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getRegionId</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>cloud.getContext().getRegionId()</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>CDNCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="CDNCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canCreateCDN</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canDeleteCDN</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canModifyCDN</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForDistribution</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"distribution"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>ConvergedInfrastructureCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="ConvergedInfrastructureCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getConvergedInfrastructureNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsAutoScaling</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsCreateFromInstance</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsDeleteDiskOnTerminate</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsHttpTraffic</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsHttpsTraffic</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMetadata</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMigrateVmOnMaintenance</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsReadOnlySharedDisks</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsRegions</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSsdDisk</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSshKeys</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsStandardDisk</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsTags</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsTemplates</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsVmAutomaticRestart</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>DataCenterCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="DataCenterCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForDataCenter</TD>
+      <TD>"Stamp"</TD>
+      <TD>"availability zone"</TD>
+      <TD>"zone"</TD>
+      <TD>"data center"</TD>
+      <TD>"zone"</TD>
+      <TD>"dc zone"</TD>
+      <TD>"data center"</TD>
+      <TD>"VDC"</TD>
+      <TD>"site"</TD>
+      <TD>"cluster"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForRegion</TD>
+      <TD>"Cloud"</TD>
+      <TD>"region"</TD>
+      <TD>"region"</TD>
+      <TD>"region"</TD>
+      <TD>"region"</TD>
+      <TD>"datacenter"</TD>
+      <TD>"region"</TD>
+      <TD>"Org"</TD>
+      <TD>"region"</TD>
+      <TD>"datacenter"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsAffinityGroups</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsFolders</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsResourcePools</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsStoragePools</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>FirewallCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="FirewallCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">FirewallConstraints<BR/>getFirewallConstraintsForCloud</TD>
+      <TD></TD>
+      <TD>FirewallConstraints.getInstance()</TD>
+      <TD>FirewallConstraints.getInstance()</TD>
+      <TD></TD>
+      <TD>FirewallConstraints.getInstance()<BR/>&nbsp;&nbsp;.withConstraint(FirewallConstraints.Constraint.PERMISSION, FirewallConstraints.Level.REQUIRED)<BR/>&nbsp;&nbsp;.withConstraint(FirewallConstraints.Constraint.DIRECTION, FirewallConstraints.Level.REQUIRED)<BR/>&nbsp;&nbsp;.withConstraint(FirewallConstraints.Constraint.SOURCE, FirewallConstraints.Level.IF_DEFINED)</TD>
+      <TD></TD>
+      <TD>FirewallConstraints.getInstance()</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getFirewallNamingConstraints</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(0, 255)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VisibleScope<BR/>getFirewallVisibleScope</TD>
+      <TD></TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD></TD>
+      <TD>VisibleScope.ACCOUNT_GLOBAL</TD>
+      <TD></TD>
+      <TD>VisibleScope.ACCOUNT_DATACENTER</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForFirewall</TD>
+      <TD></TD>
+      <TD>"firewall policy"</TD>
+      <TD>"security group"</TD>
+      <TD></TD>
+      <TD>"firewall"</TD>
+      <TD></TD>
+      <TD>"security group"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyPrecedenceRequirement</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isZeroPrecedenceHighest</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<RuleTargetType><BR/>listSupportedDestinationTypes</TD>
+      <TD></TD>
+      <TD>if (Direction.EGRESS.equals(direction) && !inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Arrays.asList(RuleTargetType.GLOBAL, RuleTargetType.CIDR, RuleTargetType.VM);<BR/> </div>&#125;<BR/> return Collections.emptyList();<BR/></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> List<RuleTargetType> supportedDestinationTypes = new ArrayList<RuleTargetType>();<BR/> if (direction.equals(Direction.INGRESS))  &#123;<BR/><div style="padding-left:25px;<BR/>"> supportedDestinationTypes = Collections.singletonList(RuleTargetType.GLOBAL);<BR/> </div>&#125;<BR/> else if (direction.equals(Direction.EGRESS)) &#123;<BR/><div style="padding-left:25px;<BR/>"> supportedDestinationTypes = Collections.singletonList(RuleTargetType.CIDR);<BR/> </div>&#125;<BR/> return supportedDestinationTypes;<BR/></TD>
+      <TD></TD>
+      <TD>if (Direction.INGRESS == direction)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.unmodifiableList(Arrays.asList(RuleTargetType.CIDR, RuleTargetType.VM));<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/></TD>
+      <TD></TD>
+      <TD>if (inVlan || direction.equals(Direction.EGRESS))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> return Collections.singletonList(RuleTargetType.GLOBAL);<BR/></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;"><del>Iterable<Direction><BR/> listSupportedDirections</del></TD>
+      <TD></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> if (directions == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> directions = Collections.unmodifiableList(Arrays.asList(Direction.INGRESS, Direction.EGRESS));<BR/> </div>&#125;<BR/> return directions;<BR/></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> return Collections.unmodifiableList(Arrays.asList(Direction.INGRESS, Direction.EGRESS));<BR/></TD>
+      <TD></TD>
+      <TD>Collections.unmodifiableList(Collections.singletonList(Direction.INGRESS))</TD>
+      <TD></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> return Collections.singletonList(Direction.INGRESS);<BR/></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<Permission><BR/>listSupportedPermissions</TD>
+      <TD></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> if (permissions == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> permissions = Collections.unmodifiableList(Collections.singletonList(Permission.ALLOW));<BR/> </div>&#125;<BR/> return permissions;<BR/></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> return Collections.singletonList(Permission.ALLOW);<BR/></TD>
+      <TD></TD>
+      <TD>Collections.unmodifiableList(Collections.singletonList(Permission.ALLOW))</TD>
+      <TD></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> return Collections.singletonList(Permission.ALLOW);<BR/></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<Protocol><BR/>listSupportedProtocols</TD>
+      <TD></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> if (protocols == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> protocols = Collections.unmodifiableList(Arrays.asList(Protocol.TCP, Protocol.ICMP, Protocol.UDP));<BR/> </div>&#125;<BR/> return protocols;<BR/></TD>
+      <TD>Collections.unmodifiableList(Arrays.asList(Protocol.TCP, Protocol.UDP))</TD>
+      <TD></TD>
+      <TD>if (allProtocolTypes == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> allProtocolTypes = Collections.unmodifiableList(Arrays.asList(Protocol.UDP, Protocol.TCP, Protocol.ICMP));<BR/> </div>&#125;<BR/> return allProtocolTypes;<BR/></TD>
+      <TD></TD>
+      <TD>Arrays.asList(Protocol.ICMP, Protocol.TCP, Protocol.UDP, Protocol.ANY)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<RuleTargetType><BR/>listSupportedSourceTypes</TD>
+      <TD></TD>
+      <TD>if (Direction.INGRESS.equals(direction) && !inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Arrays.asList(RuleTargetType.GLOBAL, RuleTargetType.CIDR, RuleTargetType.VM);<BR/> </div>&#125;<BR/> return Collections.emptyList();<BR/></TD>
+      <TD>if (inVlan) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> List<RuleTargetType> supportedSourceTypes = new ArrayList<RuleTargetType>();<BR/> if (direction.equals(Direction.INGRESS))  &#123;<BR/><div style="padding-left:25px;<BR/>"> supportedSourceTypes = Collections.singletonList(RuleTargetType.CIDR);<BR/> </div>&#125;<BR/> else if (direction.equals(Direction.EGRESS)) &#123;<BR/><div style="padding-left:25px;<BR/>"> supportedSourceTypes = Collections.singletonList(RuleTargetType.GLOBAL);<BR/> </div>&#125;<BR/> return supportedSourceTypes;<BR/></TD>
+      <TD></TD>
+      <TD>if (Direction.INGRESS == direction)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.unmodifiableList(Arrays.asList(RuleTargetType.CIDR, RuleTargetType.VM));<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/></TD>
+      <TD></TD>
+      <TD>if (inVlan || direction.equals(Direction.EGRESS))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/> ArrayList<RuleTargetType> list = new ArrayList<RuleTargetType>();<BR/> list.add(RuleTargetType.CIDR);<BR/> list.add(RuleTargetType.GLOBAL);<BR/> return list;<BR/></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>requiresRulesOnCreation</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>requiresVLAN</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsFirewallCreation</TD>
+      <TD></TD>
+      <TD>!inVlan</TD>
+      <TD>!inVlan</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>!inVlan</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsFirewallDeletion</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsRules</TD>
+      <TD></TD>
+      <TD>!inVlan && Permission.ALLOW.equals(permission)</TD>
+      <TD>(!inVlan && permission.equals(Permission.ALLOW))</TD>
+      <TD></TD>
+      <TD>( permission.equals(Permission.ALLOW) && direction.equals(Direction.INGRESS) )</TD>
+      <TD></TD>
+      <TD>(!inVlan && Direction.INGRESS.equals(direction) && Permission.ALLOW.equals(permission))</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>HttpLoadBalancerCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="HttpLoadBalancerCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getConvergedHttpLoadBalancerNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForHttpLoadBalancer</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"HTTP Load Balancer"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<String><BR/>listSupportedHttpPorts</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Collections.unmodifiableList(Arrays.asList("80", "8080"))</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsBackendServices</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsForwardingRules</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsHealthChecks</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsHttpTraffic</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsHttpsTraffic</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMoreThanOneBackendService</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMoreThanOneForwardingRule</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMoreThanOneHealthCheck</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMoreThanOneTargetHttpProxy</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMoreThanOneUrlSet</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsTargetHttpProxies</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsUrlSets</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsUsingExistingBackendService</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsUsingExistingHealthCheck</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>IPAddressCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="IPAddressCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canBeAssigned</TD>
+      <TD>false</TD>
+      <TD>!VmState.PENDING.equals(vmState)</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>if(vmState.equals(VmState.RUNNING))return true;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForIpAddress</TD>
+      <TD><font color="red">null</font></TD>
+      <TD>"cloud ip"</TD>
+      <TD>"IP address"</TD>
+      <TD></TD>
+      <TD>"address"</TD>
+      <TD></TD>
+      <TD>"floating IP"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"ip address"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyVMForPortForwarding</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyVlanForIPRequirement</TD>
+      <TD><font color="red">null</font></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyVlanForVlanIPRequirement</TD>
+      <TD><font color="red">null</font></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isAssignablePostLaunch</TD>
+      <TD>false</TD>
+      <TD>IPVersion.IPV4.equals(version)</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>if(version.equals(IPVersion.IPV4))return true;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>getVersions().contains(version)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isAssigned</TD>
+      <TD>false</TD>
+      <TD>IPVersion.IPV4.equals(version)</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>if(version.equals(IPVersion.IPV4))return true;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>getVersions().contains(version)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isForwarding</TD>
+      <TD>false</TD>
+      <TD>IPVersion.IPV4.equals(version)</TD>
+      <TD>version.equals(IPVersion.IPV4)</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isRequestable</TD>
+      <TD>false</TD>
+      <TD>IPVersion.IPV4.equals(version)</TD>
+      <TD>version.equals(IPVersion.IPV4)</TD>
+      <TD></TD>
+      <TD>if(version.equals(IPVersion.IPV4))return true;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>getVersions().contains(version)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<IPVersion><BR/>listSupportedIPVersions</TD>
+      <TD><font color="red">null</font></TD>
+      <TD>if (supportedIpVersions == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> supportedIpVersions = Collections.unmodifiableList(Collections.singletonList(IPVersion.IPV4));<BR/> </div>&#125;<BR/> return supportedIpVersions;<BR/></TD>
+      <TD>Collections.singletonList(IPVersion.IPV4)</TD>
+      <TD></TD>
+      <TD>Collections.singletonList(IPVersion.IPV4)</TD>
+      <TD></TD>
+      <TD>getVersions()</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Collections.emptyList()</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsVLANAddresses</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>IPVersion.IPV4.equals(ofVersion)</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>ImageCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="ImageCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canBundle</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canImage</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>fromState.equals(VmState.STOPPED)</TD>
+      <TD>VmState.STOPPED.equals(vmState)</TD>
+      <TD>true</TD>
+      <TD>VmState.STOPPED.equals(fromState)</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getImageNamingConstraints</TD>
+      <TD>NamingConstraints.getStrictInstance(3, 15)<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.'})</TD>
+      <TD>NamingConstraints.getAlphaNumeric(0, 255)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.constrainedBy('_', '-', '(', ')', '+', ',', '.')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 512)<BR/>&nbsp;&nbsp;.constrainedBy('.', '-')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 32)<BR/>&nbsp;&nbsp;.constrainedBy(' ', '-', '_', '.', ',', '[', ']', '(', ')', ' {', '}', '~')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 30)<BR/>&nbsp;&nbsp;.constrainedBy(new char[]  {'-'})<BR/>&nbsp;&nbsp;.lowerCaseOnly()</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VisibleScope<BR/>getImageVisibleScope</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+      <TD>VisibleScope.ACCOUNT_GLOBAL</TD>
+      <TD>null</TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>VisibleScope.ACCOUNT_DATACENTER</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForCustomImage</TD>
+      <TD>"image"</TD>
+      <TD>"image"</TD>
+      <TD>getProviderTermForImage(locale, cls)</TD>
+      <TD>getProviderTermForImage(locale, imageClass)</TD>
+      <TD>"image"</TD>
+      <TD>getProviderTermForImage(locale, cls)</TD>
+      <TD>getProviderTermForImage(locale, cls)</TD>
+      <TD>getProviderTermForImage(locale, cls)</TD>
+      <TD>getProviderTermForImage(locale, cls)</TD>
+      <TD>getProviderTermForImage(locale, cls)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForImage</TD>
+      <TD>if (cls.equals(ImageClass.MACHINE))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return "Virtual Hard Disk";<BR/> </div>&#125;<BR/> return "image";<BR/></TD>
+      <TD>"image"</TD>
+      <TD>switch( cls) &#123;<BR/><div style="padding-left:25px;<BR/>"> case KERNEL: return "kernel template";<BR/> case RAMDISK: return "ramdisk template";<BR/> </div>&#125;<BR/> return "template";<BR/></TD>
+      <TD>"image"</TD>
+      <TD>"image"</TD>
+      <TD>"image"</TD>
+      <TD>switch( cls) &#123;<BR/><div style="padding-left:25px;<BR/>"> case MACHINE: return "machine image";<BR/> case KERNEL: return "kernel image";<BR/> case RAMDISK: return "ramdisk image";<BR/> </div>&#125;<BR/> return "image";<BR/></TD>
+      <TD>"vApp Template"</TD>
+      <TD>"template"</TD>
+      <TD>"template"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyLocalBundlingRequirement</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>imageCaptureDestroysVM</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<MachineImageFormat><BR/>listSupportedFormats</TD>
+      <TD>Collections.singletonList(MachineImageFormat.VHD)</TD>
+      <TD>Collections.singleton(MachineImageFormat.AWS)</TD>
+      <TD>Arrays.asList( MachineImageFormat.QCOW2, MachineImageFormat.VHD, MachineImageFormat.RAW )</TD>
+      <TD>Arrays.asList(MachineImageFormat.RAW)</TD>
+      <TD>Collections.singletonList(MachineImageFormat.RAW)</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.singletonList(MachineImageFormat.VMDK)</TD>
+      <TD>ArrayList<MachineImageFormat> list = new ArrayList<MachineImageFormat>();<BR/> list.add(MachineImageFormat.VMDK);<BR/> list.add(MachineImageFormat.OVF);<BR/> return list;<BR/></TD>
+      <TD>Collections.singletonList(MachineImageFormat.VMDK)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<MachineImageFormat><BR/>listSupportedFormatsForBundling</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+      <TD>Collections.emptyList()</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<ImageClass><BR/>listSupportedImageClasses</TD>
+      <TD>Collections.singletonList(ImageClass.MACHINE)</TD>
+      <TD>Collections.singleton(ImageClass.MACHINE)</TD>
+      <TD>Collections.singletonList(ImageClass.MACHINE)</TD>
+      <TD>Arrays.asList(ImageClass.MACHINE)</TD>
+      <TD>Collections.unmodifiableList(Collections.singletonList(ImageClass.MACHINE))</TD>
+      <TD>Collections.singletonList(ImageClass.MACHINE)</TD>
+      <TD>ArrayList<ImageClass> values = new ArrayList<ImageClass>();<BR/> Collections.addAll(values, ImageClass.values());<BR/> return values;<BR/></TD>
+      <TD>Collections.singletonList(ImageClass.MACHINE)</TD>
+      <TD>Collections.singletonList(ImageClass.MACHINE)</TD>
+      <TD>Collections.singletonList(ImageClass.MACHINE)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<MachineImageType><BR/>listSupportedImageTypes</TD>
+      <TD>Collections.singletonList(MachineImageType.VOLUME)</TD>
+      <TD>Collections.singleton(MachineImageType.VOLUME)</TD>
+      <TD>Collections.singletonList(MachineImageType.VOLUME)</TD>
+      <TD>imageTypes</TD>
+      <TD>Collections.unmodifiableList(Collections.singletonList(MachineImageType.STORAGE))</TD>
+      <TD>Collections.singletonList(MachineImageType.VOLUME)</TD>
+      <TD>Collections.singletonList(MachineImageType.VOLUME)</TD>
+      <TD>Collections.singletonList(MachineImageType.VOLUME)</TD>
+      <TD>Collections.singletonList(MachineImageType.VOLUME)</TD>
+      <TD>Collections.singletonList(MachineImageType.VOLUME)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsDirectImageUpload</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>getProvider().hasApi(Templates.REGISTER_TEMPLATE)</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsImageCapture</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>getProvider().hasApi(Templates.CREATE_TEMPLATE)</TD>
+      <TD>imageTypes.contains(machineImageType)</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>MachineImageType.VOLUME.equals(type)</TD>
+      <TD>true</TD>
+      <TD>MachineImageType.VOLUME.equals(type)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsImageCopy</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsImageSharing</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>getProvider().hasApi(Templates.UPDATE_TEMPLATE_PERMISSIONS)</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsImageSharingWithPublic</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>getProvider().hasApi(Templates.UPDATE_TEMPLATE_PERMISSIONS)</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsListingAllRegions</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsPublicLibrary</TD>
+      <TD>true</TD>
+      <TD>cls.equals(ImageClass.MACHINE)</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>ImageClass.MACHINE.equals(cls)</TD>
+      <TD>true</TD>
+      <TD>ImageClass.MACHINE.equals(cls)</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>LoadBalancerCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="LoadBalancerCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">LoadBalancerAddressType<BR/>getAddressType</TD>
+      <TD></TD>
+      <TD>LoadBalancerAddressType.IP</TD>
+      <TD>LoadBalancerAddressType.IP</TD>
+      <TD></TD>
+      <TD>LoadBalancerAddressType.DNS</TD>
+      <TD></TD>
+      <TD>LoadBalancerAddressType.IP</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getLoadBalancerNamingConstraints</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(0, 255)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VisibleScope<BR/>getLoadBalancerVisibleScope</TD>
+      <TD></TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD></TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+      <TD></TD>
+      <TD>null</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaxPublicPorts</TD>
+      <TD></TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD></TD>
+      <TD>0</TD>
+      <TD></TD>
+      <TD>1</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForLoadBalancer</TD>
+      <TD></TD>
+      <TD>"load balancer"</TD>
+      <TD>"load balancer"</TD>
+      <TD></TD>
+      <TD>"load balancer"</TD>
+      <TD></TD>
+      <TD>"pool"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getRelationalDatabaseNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>healthCheckRequiresListener</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>healthCheckRequiresLoadBalancer</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>healthCheckRequiresName</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyEndpointsOnCreateRequirement</TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyHealthCheckOnCreateRequirement</TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyListenersOnCreateRequirement</TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyVlanOnCreateRequirement</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isAddressAssignedByProvider</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isDataCenterLimited</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<LbAlgorithm><BR/>listSupportedAlgorithms</TD>
+      <TD></TD>
+      <TD>if (algorithmList == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> algorithmList = Collections.unmodifiableList(Arrays.asList(LbAlgorithm.LEAST_CONN, LbAlgorithm.ROUND_ROBIN));<BR/> </div>&#125;<BR/> return algorithmList;<BR/></TD>
+      <TD>List<LbAlgorithm> list = algorithms;<BR/> if (list == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> list = new ArrayList<LbAlgorithm>();<BR/> list.add(LbAlgorithm.ROUND_ROBIN);<BR/> list.add(LbAlgorithm.LEAST_CONN);<BR/> list.add(LbAlgorithm.SOURCE);<BR/> algorithms = Collections.unmodifiableList(list);<BR/> </div>&#125;<BR/> return algorithms;<BR/></TD>
+      <TD></TD>
+      <TD>Collections.singletonList(LbAlgorithm.SOURCE)</TD>
+      <TD></TD>
+      <TD>Arrays.asList(LbAlgorithm.LEAST_CONN, LbAlgorithm.ROUND_ROBIN, LbAlgorithm.SOURCE)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<LbEndpointType><BR/>listSupportedEndpointTypes</TD>
+      <TD></TD>
+      <TD>if (endpointTypes == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> endpointTypes = Collections.unmodifiableList(Arrays.asList(LbEndpointType.VM));<BR/> </div>&#125;<BR/> return endpointTypes;<BR/></TD>
+      <TD>Collections.singletonList(LbEndpointType.VM)</TD>
+      <TD></TD>
+      <TD>Collections.singletonList(LbEndpointType.VM)</TD>
+      <TD></TD>
+      <TD>Arrays.asList(LbEndpointType.IP)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<IPVersion><BR/>listSupportedIPVersions</TD>
+      <TD></TD>
+      <TD>if (ipVersions == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> ipVersions = Collections.unmodifiableList(Arrays.asList(IPVersion.IPV4, IPVersion.IPV6));<BR/> </div>&#125;<BR/> return ipVersions;<BR/></TD>
+      <TD>Collections.singletonList(IPVersion.IPV4)</TD>
+      <TD></TD>
+      <TD>if (versions == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> versions = Collections.unmodifiableList(Arrays.asList( IPVersion.IPV4 ));<BR/> </div>&#125;<BR/> return versions;<BR/></TD>
+      <TD></TD>
+      <TD>Arrays.asList(IPVersion.IPV4, IPVersion.IPV6)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<LbPersistence><BR/>listSupportedPersistenceOptions</TD>
+      <TD></TD>
+      <TD>if (persistences == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> persistences = Collections.unmodifiableList(Arrays.asList(LbPersistence.NONE));<BR/> </div>&#125;<BR/> return persistences;<BR/></TD>
+      <TD>Collections.singletonList(LbPersistence.NONE)</TD>
+      <TD></TD>
+      <TD>Collections.singletonList(LbPersistence.SUBNET)</TD>
+      <TD></TD>
+      <TD>Arrays.asList(LbPersistence.COOKIE, LbPersistence.SUBNET, LbPersistence.NONE)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<LbProtocol><BR/>listSupportedProtocols</TD>
+      <TD></TD>
+      <TD>if (protocols == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> protocols = Collections.unmodifiableList( Arrays.asList(LbProtocol.RAW_TCP, LbProtocol.HTTP, LbProtocol.WS) );<BR/> </div>&#125;<BR/> return protocols;<BR/></TD>
+      <TD>if (protocols == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> List<LbProtocol> list = new ArrayList<LbProtocol>();<BR/> list.add(LbProtocol.RAW_TCP);<BR/> protocols = Collections.unmodifiableList(list);<BR/> </div>&#125;<BR/> return protocols;<BR/></TD>
+      <TD></TD>
+      <TD>if (protocols == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> protocols = Collections.unmodifiableList(Arrays.asList( LbProtocol.RAW_TCP ));<BR/> </div>&#125;<BR/> return protocols;<BR/></TD>
+      <TD></TD>
+      <TD>Arrays.asList(LbProtocol.HTTP, LbProtocol.RAW_TCP)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsAddingEndpoints</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMonitoring</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMultipleTrafficTypes</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSslCertificateStore</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>RelationalDatabaseCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="RelationalDatabaseCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getAccountNumber</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>ProviderContext ctx = provider.getContext();<BR/> return ctx.getAccountNumber();<BR/></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForBackup</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"Backup"</TD>
+      <TD></TD>
+      <TD>"backup"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForDatabase</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"database"</TD>
+      <TD></TD>
+      <TD>"database"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForSnapshot</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"point-in-time recovery"</TD>
+      <TD></TD>
+      <TD>"snapshot"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getRegionId</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>ProviderContext ctx = provider.getContext();<BR/> return ctx.getRegionId();<BR/></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getRelationalDatabaseNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsAlterDatabase</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsBackupConfigurations</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsDatabaseBackups</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsDeleteBackup</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsDemandBackups</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsFirewallRules</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsHighAvailability</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsLowAvailability</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsMaintenanceWindows</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsRestoreBackup</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsScheduledDatabaseBackups</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSnapshots</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>ShellKeyCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="ShellKeyCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForKeypair</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"SSH keypair"</TD>
+      <TD>"keypair"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"keypair"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyKeyImportRequirement</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>SnapshotCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="SnapshotCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForSnapshot</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"snapshot"</TD>
+      <TD></TD>
+      <TD>"snapshot"</TD>
+      <TD></TD>
+      <TD>"snapshot"</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getSnapshotNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(0, 255)</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VisibleScope<BR/>getSnapshotVisibleScope</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>null</TD>
+      <TD></TD>
+      <TD>VisibleScope.ACCOUNT_GLOBAL</TD>
+      <TD></TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyAttachmentRequirement</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSnapshotCopying</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSnapshotCreation</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSnapshotSharing</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSnapshotSharingWithPublic</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>TopologyCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="TopologyCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getTopologyNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+      <TD></TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>VLANCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="VLANCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsMultipleTrafficTypesOverSubnet</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>if (getSubnetSupport().equals(Requirement.NONE)) &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/> int count = 0;<BR/> for( IPVersion version : listSupportedIPVersions()) &#123;<BR/><div style="padding-left:25px;<BR/>"> count++;<BR/> if (count > 1) &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>if (getSubnetSupport().equals(Requirement.NONE)) &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/> int count = 0;<BR/> for( IPVersion version : listSupportedIPVersions()) &#123;<BR/><div style="padding-left:25px;<BR/>"> count++;<BR/> if (count > 1) &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsMultipleTrafficTypesOverVlan</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>int count = 0;<BR/> for( IPVersion version : listSupportedIPVersions()) &#123;<BR/><div style="padding-left:25px;<BR/>"> count++;<BR/> if (count > 1) &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>int count = 0;<BR/> for( IPVersion version : listSupportedIPVersions()) &#123;<BR/><div style="padding-left:25px;<BR/>"> count++;<BR/> if (count > 1) &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsNewNetworkInterfaceCreation</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsNewRoutingTableCreation</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsNewSubnetCreation</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>Quantum q = new Quantum(getProvider());<BR/> return q.getNetworkType().equals(Quantum.QuantumType.QUANTUM);<BR/></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>allowsNewVlanCreation</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>getProvider().hasApi("createNetwork")</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaxNetworkInterfaceCount</TD>
+      <TD>0</TD>
+      <TD></TD>
+      <TD>0</TD>
+      <TD></TD>
+      <TD>-2</TD>
+      <TD></TD>
+      <TD>-2</TD>
+      <TD>0</TD>
+      <TD>0</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaxVlanCount</TD>
+      <TD>0</TD>
+      <TD></TD>
+      <TD>AbstractCapabilities.LIMIT_UNLIMITED</TD>
+      <TD></TD>
+      <TD>-2</TD>
+      <TD></TD>
+      <TD>-2</TD>
+      <TD>APITrace.begin(getProvider(), "VLAN.getMaxVlanCount");<BR/> try  &#123;<BR/><div style="padding-left:25px;<BR/>"> vCloudMethod method = new vCloudMethod(getProvider());<BR/> return method.getNetworkQuota();<BR/> </div>&#125;<BR/> finally  &#123;<BR/><div style="padding-left:25px;<BR/>"> APITrace.end();<BR/> </div>&#125;<BR/></TD>
+      <TD>0</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForNetworkInterface</TD>
+      <TD>"Netwrok Adapter"</TD>
+      <TD></TD>
+      <TD>"NIC"</TD>
+      <TD></TD>
+      <TD>"NIC"</TD>
+      <TD></TD>
+      <TD>"network interface"</TD>
+      <TD>"network interface"</TD>
+      <TD>"NIC"</TD>
+      <TD>"nic"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForSubnet</TD>
+      <TD>"Subnet"</TD>
+      <TD></TD>
+      <TD>""</TD>
+      <TD></TD>
+      <TD>""</TD>
+      <TD></TD>
+      <TD>"subnet"</TD>
+      <TD>"subnet"</TD>
+      <TD>"network"</TD>
+      <TD>"network"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForVlan</TD>
+      <TD>"Virtual Machine Network"</TD>
+      <TD></TD>
+      <TD>"network"</TD>
+      <TD></TD>
+      <TD>"network"</TD>
+      <TD></TD>
+      <TD>"network"</TD>
+      <TD>"network"</TD>
+      <TD>"network"</TD>
+      <TD>"network"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>getRoutingTableSupport</TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>getSubnetSupport</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Quantum q = new Quantum(getProvider());<BR/> return (q.getNetworkType().equals(Quantum.QuantumType.QUANTUM) ? Requirement.REQUIRED : Requirement.NONE);<BR/></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VisibleScope<BR/>getVLANVisibleScope</TD>
+      <TD>null</TD>
+      <TD></TD>
+      <TD>null</TD>
+      <TD></TD>
+      <TD>VisibleScope.ACCOUNT_GLOBAL</TD>
+      <TD></TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getVlanNamingConstraints</TD>
+      <TD>NamingConstraints.getStrictInstance(3, 15)<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.'})</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 32)<BR/>&nbsp;&nbsp;.constrainedBy(' ', '-', '_', '.', ',', '[', ']', '(', ')', ' {', '}', '~')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 30)<BR/>&nbsp;&nbsp;.constrainedBy(new char[]  {'-'})<BR/>&nbsp;&nbsp;.lowerCaseOnly()</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifySubnetDCRequirement</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isNetworkInterfaceSupportEnabled</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isSubnetDataCenterConstrained</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isVlanDataCenterConstrained</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<IPVersion><BR/>listSupportedIPVersions</TD>
+      <TD>ArrayList<IPVersion> list = new ArrayList<IPVersion>();<BR/> list.add(IPVersion.IPV4);<BR/> list.add(IPVersion.IPV6);<BR/> return list;<BR/></TD>
+      <TD></TD>
+      <TD>Collections.singletonList(IPVersion.IPV4)</TD>
+      <TD></TD>
+      <TD>Collections.singletonList(IPVersion.IPV4)</TD>
+      <TD></TD>
+      <TD>Collections.singletonList(IPVersion.IPV4)</TD>
+      <TD>Collections.singletonList(IPVersion.IPV4)</TD>
+      <TD>ArrayList<IPVersion> list = new ArrayList<IPVersion>();<BR/> list.add(IPVersion.IPV4);<BR/> list.add(IPVersion.IPV6);<BR/> return list;<BR/></TD>
+      <TD>ArrayList<IPVersion> list = new ArrayList<IPVersion>();<BR/> list.add(IPVersion.IPV4);<BR/> list.add(IPVersion.IPV6);<BR/> return list;<BR/></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsInternetGatewayCreation</TD>
+      <TD>true</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsRawAddressRouting</TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>VirtualMachineCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="VirtualMachineCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canAlter</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>if (!getProvider().getProviderName().contains("Datapipe"))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return fromState.equals(VmState.STOPPED);<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD>fromState.equals(VmState.STOPPED)</TD>
+      <TD>false</TD>
+      <TD>VmState.STOPPED.equals(fromState)</TD>
+      <TD>VmState.RUNNING.equals(fromState) || VmState.STOPPED.equals(fromState)</TD>
+      <TD>false</TD>
+      <TD>fromState.equals(VmState.STOPPED)</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canClone</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>if ((fromState == VmState.RUNNING) || (fromState == VmState.STOPPED))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canPause</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>boolean canPause = ((NovaOpenStack)getProvider()).getCloudProvider().supportsPauseUnpause(null);<BR/> if (canPause)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return !fromState.equals(VmState.PAUSED) && !fromState.equals(VmState.ERROR);<BR/> </div>&#125;<BR/> return canPause;<BR/></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canReboot</TD>
+      <TD>false</TD>
+      <TD>VmState.RUNNING.equals(fromState)</TD>
+      <TD>!VmState.ERROR.equals(fromState)</TD>
+      <TD>(fromState.equals(VmState.RUNNING))</TD>
+      <TD>if (fromState == VmState.RUNNING)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/></TD>
+      <TD>VmState.RUNNING.equals(fromState)</TD>
+      <TD>!fromState.equals(VmState.ERROR)</TD>
+      <TD>VmState.RUNNING.equals(fromState)</TD>
+      <TD>VmState.RUNNING.equals(fromState)</TD>
+      <TD>fromState.equals(VmState.RUNNING)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canResume</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>boolean canResume = ((NovaOpenStack)getProvider()).getCloudProvider().supportsSuspendResume(null);<BR/> if (canResume)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return !fromState.equals(VmState.RUNNING) && !fromState.equals(VmState.ERROR);<BR/> </div>&#125;<BR/> return canResume;<BR/></TD>
+      <TD>!fromState.equals(VmState.RUNNING)</TD>
+      <TD>!fromState.equals(VmState.RUNNING)</TD>
+      <TD>!fromState.equals(VmState.RUNNING)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canStart</TD>
+      <TD>!fromState.equals(VmState.RUNNING)</TD>
+      <TD>VmState.STOPPED.equals(fromState)</TD>
+      <TD>!VmState.RUNNING.equals(fromState) && !VmState.ERROR.equals(fromState)</TD>
+      <TD>fromState.equals(VmState.STOPPED)</TD>
+      <TD>if (fromState == VmState.STOPPED)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/></TD>
+      <TD>!VmState.RUNNING.equals(fromState)</TD>
+      <TD>boolean canStart = ((NovaOpenStack)getProvider()).getCloudProvider().supportsStartStop(null);<BR/> if (canStart)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return !fromState.equals(VmState.RUNNING) && !fromState.equals(VmState.ERROR);<BR/> </div>&#125;<BR/> return canStart;<BR/></TD>
+      <TD>!fromState.equals(VmState.RUNNING)</TD>
+      <TD>!fromState.equals(VmState.RUNNING)</TD>
+      <TD>!fromState.equals(VmState.RUNNING)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canStop</TD>
+      <TD>!VmState.STOPPED.equals(fromState) && !VmState.ERROR.equals(fromState) && !VmState.TERMINATED.equals(fromState)</TD>
+      <TD>VmState.RUNNING.equals(fromState)</TD>
+      <TD>!fromState.equals(VmState.STOPPED) && !VmState.ERROR.equals(fromState)</TD>
+      <TD>fromState.equals(VmState.RUNNING)</TD>
+      <TD>if (fromState == VmState.RUNNING)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/></TD>
+      <TD>!VmState.STOPPED.equals(fromState)</TD>
+      <TD>boolean canStop = ((NovaOpenStack)getProvider()).getCloudProvider().supportsStartStop(null);<BR/> if (canStop)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return !fromState.equals(VmState.STOPPED) && !fromState.equals(VmState.ERROR);<BR/> </div>&#125;<BR/> return canStop;<BR/></TD>
+      <TD>!fromState.equals(VmState.STOPPED)</TD>
+      <TD>!fromState.equals(VmState.STOPPED)</TD>
+      <TD>!fromState.equals(VmState.STOPPED)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canSuspend</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>boolean canSuspend = ((NovaOpenStack)getProvider()).getCloudProvider().supportsSuspendResume(null);<BR/> if (canSuspend)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return !fromState.equals(VmState.SUSPENDED) && !fromState.equals(VmState.ERROR);<BR/> </div>&#125;<BR/> return canSuspend;<BR/></TD>
+      <TD>!fromState.equals(VmState.SUSPENDED)</TD>
+      <TD>!fromState.equals(VmState.STOPPED)</TD>
+      <TD>!fromState.equals(VmState.SUSPENDED)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canTerminate</TD>
+      <TD>( VmState.STOPPED.equals(fromState) || VmState.ERROR.equals(fromState))&& !VmState.TERMINATED.equals(fromState)</TD>
+      <TD>VmState.RUNNING.equals(fromState) || VmState.STOPPED.equals(fromState) || VmState.ERROR.equals(fromState)</TD>
+      <TD>!fromState.equals(VmState.TERMINATED)</TD>
+      <TD>!VmState.PENDING.equals(fromState) && !VmState.TERMINATED.equals(fromState)</TD>
+      <TD>if ((fromState == VmState.RUNNING) || (fromState == VmState.STOPPED))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/></TD>
+      <TD>!VmState.TERMINATED.equals(fromState)</TD>
+      <TD>!fromState.equals(VmState.TERMINATED)</TD>
+      <TD>!fromState.equals(VmState.TERMINATED)</TD>
+      <TD>fromState.equals(VmState.STOPPED)</TD>
+      <TD>!fromState.equals(VmState.TERMINATED)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canUnpause</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>boolean canUnpause = ((NovaOpenStack)getProvider()).getCloudProvider().supportsPauseUnpause(null);<BR/> if (canUnpause)  &#123;<BR/><div style="padding-left:25px;<BR/>"> return !fromState.equals(VmState.RUNNING) && !fromState.equals(VmState.ERROR);<BR/> </div>&#125;<BR/> return canUnpause;<BR/></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getCostFactor</TD>
+      <TD>0</TD>
+      <TD>VmState.TERMINATED.equals(state) ? 0 : 100</TD>
+      <TD>100</TD>
+      <TD>100</TD>
+      <TD>int costFactor = 0;<BR/> switch( state) &#123;<BR/><div style="padding-left:25px;<BR/>"> case TERMINATED:  &#123;<BR/><div style="padding-left:25px;<BR/>"> costFactor = 0;<BR/> break;<BR/> </div>&#125;<BR/> default:  &#123;<BR/><div style="padding-left:25px;<BR/>"> costFactor = 100;<BR/> break;<BR/> </div>&#125;<BR/> </div>&#125;<BR/> return costFactor;<BR/></TD>
+      <TD>(VmState.TERMINATED.equals(state) ? 0 : 100)</TD>
+      <TD>100</TD>
+      <TD>if (!state.equals(VmState.RUNNING)) &#123;<BR/><div style="padding-left:25px;<BR/>"> return 0;<BR/> </div>&#125;<BR/> return 100;<BR/></TD>
+      <TD>0</TD>
+      <TD>0</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaximumVirtualMachineCount</TD>
+      <TD>0</TD>
+      <TD>Capabilities.LIMIT_UNKNOWN</TD>
+      <TD>Capabilities.LIMIT_UNKNOWN</TD>
+      <TD>Capabilities.LIMIT_UNKNOWN</TD>
+      <TD>-2</TD>
+      <TD>Capabilities.LIMIT_UNKNOWN</TD>
+      <TD>Capabilities.LIMIT_UNKNOWN</TD>
+      <TD>APITrace.begin(getProvider(), "VM.getMaximumVirtualMachineCount");<BR/> try  &#123;<BR/><div style="padding-left:25px;<BR/>"> vCloudMethod method = new vCloudMethod(getProvider());<BR/> return method.getVMQuota();<BR/> </div>&#125;<BR/> finally  &#123;<BR/><div style="padding-left:25px;<BR/>"> APITrace.end();<BR/> </div>&#125;<BR/></TD>
+      <TD>Capabilities.LIMIT_UNKNOWN</TD>
+      <TD>-1</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForVirtualMachine</TD>
+      <TD>"virtual machine"</TD>
+      <TD>"server"</TD>
+      <TD>"virtual machine"</TD>
+      <TD>"droplet"</TD>
+      <TD>"instance"</TD>
+      <TD>"machine"</TD>
+      <TD>"server"</TD>
+      <TD>"VM"</TD>
+      <TD>"VM"</TD>
+      <TD>"server"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VMScalingCapabilities<BR/>getVerticalScalingCapabilities</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>VMScalingCapabilities.getInstance(false, true, false)</TD>
+      <TD>VMScalingCapabilities.getInstance(false, true, false)</TD>
+      <TD>VMScalingCapabilities.getInstance(false, false, Requirement.NONE, Requirement.NONE)</TD>
+      <TD>VMScalingCapabilities.getInstance(false, true, false)</TD>
+      <TD>VMScalingCapabilities.getInstance(false, true, false)</TD>
+      <TD>null</TD>
+      <TD>VMScalingCapabilities.getInstance(false, false, true)</TD>
+      <TD>VMScalingCapabilities.getInstance(false,false,true)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getVirtualMachineNamingConstraints</TD>
+      <TD>NamingConstraints.getStrictInstance(3, 15)<BR/>&nbsp;&nbsp;.constrainedBy(new char[] {'-', '.'})</TD>
+      <TD>NamingConstraints.getHostNameInstance(false)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 64)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.constrainedBy('.', '-')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)<BR/>&nbsp;&nbsp;.constrainedBy('-', '.')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 32)<BR/>&nbsp;&nbsp;.constrainedBy(' ', '-', '_', '.', ',', '[', ']', '(', ')', ' {', '}', '~')</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 100)</TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 30)<BR/>&nbsp;&nbsp;.constrainedBy(new char[]  {'-'})<BR/>&nbsp;&nbsp;.lowerCaseOnly()</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VisibleScope<BR/>getVirtualMachineProductVisibleScope</TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>VisibleScope.ACCOUNT_DATACENTER</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">VisibleScope<BR/>getVirtualMachineVisibleScope</TD>
+      <TD>VisibleScope.ACCOUNT_REGION</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>VisibleScope.ACCOUNT_DATACENTER</TD>
+      <TD>null</TD>
+      <TD>VisibleScope.ACCOUNT_DATACENTER</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+      <TD>null</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyDataCenterLaunchRequirement</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyImageRequirement</TD>
+      <TD>( cls.equals(ImageClass.MACHINE) ? Requirement.REQUIRED : Requirement.NONE )</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>(cls.equals(ImageClass.MACHINE) ? Requirement.REQUIRED : Requirement.NONE)</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>( cls.equals(ImageClass.MACHINE) ? Requirement.REQUIRED : Requirement.NONE )</TD>
+      <TD>(cls.equals(ImageClass.MACHINE) ? Requirement.REQUIRED : Requirement.NONE)</TD>
+      <TD>(cls.equals(ImageClass.MACHINE) ? Requirement.REQUIRED : Requirement.OPTIONAL)</TD>
+      <TD>(cls.equals(ImageClass.MACHINE) ? Requirement.REQUIRED : Requirement.NONE)</TD>
+      <TD>(ImageClass.MACHINE.equals(cls) ? Requirement.REQUIRED : Requirement.OPTIONAL)</TD>
+      <TD>(cls.equals(ImageClass.MACHINE) ? Requirement.REQUIRED : Requirement.NONE)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyPasswordRequirement</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyRootVolumeRequirement</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyShellKeyRequirement</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>if (Platform.WINDOWS.equals(platform)) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Requirement.NONE;<BR/> </div>&#125;<BR/> return Requirement.OPTIONAL;<BR/></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>IdentityServices services = getProvider().getIdentityServices();<BR/> if (services == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Requirement.NONE;<BR/> </div>&#125;<BR/> ShellKeySupport support = services.getShellKeySupport();<BR/> if (support == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Requirement.NONE;<BR/> </div>&#125;<BR/> return Requirement.OPTIONAL;<BR/></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyStaticIPRequirement</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.OPTIONAL</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifySubnetRequirement</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>identifyVlanRequirement</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>APITrace.begin(getProvider(), "VM.identifyVlanRequirement");<BR/> try  &#123;<BR/><div style="padding-left:25px;<BR/>"> if (getProvider().getServiceProvider().equals(CSServiceProvider.DATAPIPE)) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Requirement.NONE;<BR/> </div>&#125;<BR/> if (getProvider().getVersion().greaterThan(CSVersion.CS21)) &#123;<BR/><div style="padding-left:25px;<BR/>"> ProviderContext ctx = getProvider().getContext();<BR/> if (ctx == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> throw new CloudException("No context was set for this request");<BR/> </div>&#125;<BR/> String regionId = ctx.getRegionId();<BR/> if (regionId == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> throw new CloudException("No region was set for this request");<BR/> </div>&#125;<BR/> return (getProvider().getDataCenterServices().zoneSupportsVlans(regionId) ? Requirement.REQUIRED : Requirement.NONE);<BR/> </div>&#125;<BR/> return Requirement.NONE;<BR/> </div>&#125;<BR/> finally  &#123;<BR/><div style="padding-left:25px;<BR/>"> APITrace.end();<BR/> </div>&#125;<BR/></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>NetworkServices services = getProvider().getNetworkServices();<BR/> if (services == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Requirement.NONE;<BR/> </div>&#125;<BR/> VLANSupport support = services.getVlanSupport();<BR/> if (support == null || !support.isSubscribed()) &#123;<BR/><div style="padding-left:25px;<BR/>"> return Requirement.NONE;<BR/> </div>&#125;<BR/> return Requirement.REQUIRED;<BR/></TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.OPTIONAL</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isAPITerminationPreventable</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isBasicAnalyticsSupported</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isExtendedAnalyticsSupported</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isUserDataSupported</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isUserDefinedPrivateIPSupported</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isVMProductDCConstrained</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<Architecture><BR/>listSupportedArchitectures</TD>
+      <TD>Collections.singletonList(Architecture.I64)</TD>
+      <TD>architectures</TD>
+      <TD>if (architectures == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> ArrayList<Architecture> a = new ArrayList<Architecture>();<BR/> a.add(Architecture.I32);<BR/> a.add(Architecture.I64);<BR/> architectures = Collections.unmodifiableList(a);<BR/> </div>&#125;<BR/> return architectures;<BR/></TD>
+      <TD>if (architectures == null)  &#123;<BR/><div style="padding-left:25px;<BR/>"> architectures = Arrays.asList(Architecture.I32, Architecture.I64);<BR/> </div>&#125;<BR/> return architectures;<BR/></TD>
+      <TD>Collections.unmodifiableList( Arrays.asList(Architecture.I64, Architecture.I32) )</TD>
+      <TD>Collections.singletonList(Architecture.I64)</TD>
+      <TD>if (architectures == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> ArrayList<Architecture> a = new ArrayList<Architecture>();<BR/> a.add(Architecture.I32);<BR/> a.add(Architecture.I64);<BR/> architectures = Collections.unmodifiableList(a);<BR/> </div>&#125;<BR/> return architectures;<BR/></TD>
+      <TD>Cache<Architecture> cache = Cache.getInstance(getProvider(), "architectures", Architecture.class, CacheLevel.CLOUD);<BR/> Iterable<Architecture> list = cache.get(getContext());<BR/> if (list == null)  &#123;<BR/><div style="padding-left:25px;<BR/>"> list = Collections.unmodifiableList(Arrays.asList( Architecture.I32, Architecture.I64 ));<BR/> cache.put(getContext(), list);<BR/> </div>&#125;<BR/> return list;<BR/></TD>
+      <TD>ArrayList<Architecture> list = new ArrayList<Architecture>();<BR/> list.add(Architecture.I32);<BR/> list.add(Architecture.I64);<BR/> return list;<BR/></TD>
+      <TD>if (architectures == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> architectures = Collections.unmodifiableCollection( Arrays.asList(Architecture.I64, Architecture.I32) );<BR/> </div>&#125;<BR/> return architectures;<BR/></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsAlterVM</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>if (!getProvider().getProviderName().contains("Datapipe"))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsClientRequestToken</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsClone</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsCloudStoredShellKey</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsPause</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>((NovaOpenStack)getProvider()).getCloudProvider().supportsPauseUnpause(null)</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsReboot</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsResume</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>((NovaOpenStack)getProvider()).getCloudProvider().supportsSuspendResume(null)</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSpotVirtualMachines</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsStart</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>((NovaOpenStack)getProvider()).getCloudProvider().supportsStartStop(null)</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsStop</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>((NovaOpenStack)getProvider()).getCloudProvider().supportsStartStop(null)</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsSuspend</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>((NovaOpenStack)getProvider()).getCloudProvider().supportsSuspendResume(null)</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsTerminate</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>false</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+      <TD>true</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>supportsUnPause</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>((NovaOpenStack)getProvider()).getCloudProvider().supportsPauseUnpause(null)</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+<H2>VolumeCapabilities</H2>
+<DIV CLASS="form-wrapper">
+<TABLE cellspacing="0" id="VolumeCapabilities" style="border-collapse:collapse;">
+  <TR class="GridviewScrollHeader">
+    <TD>Method</TD>
+    <TD>azurepack</TD>
+    <TD>brightbox</TD>
+    <TD>cloudstack</TD>
+    <TD>digitalocean</TD>
+    <TD>google</TD>
+    <TD>joyent</TD>
+    <TD>openstack</TD>
+    <TD>vcloud</TD>
+    <TD>virtustream</TD>
+    <TD>vsphere</TD>
+  </TR>
+    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canAttach</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>if (vmState.equals(VmState.STOPPED) || vmState.equals(VmState.RUNNING))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>if (vmState.equals(VmState.RUNNING)) &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>vmState.equals(VmState.STOPPED)</TD>
+      <TD>false</TD>
+      <TD>(vmState.equals(VmState.RUNNING))</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>canDetach</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>if (vmState.equals(VmState.STOPPED) || vmState.equals(VmState.RUNNING))  &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> return false;<BR/></TD>
+      <TD></TD>
+      <TD>if (vmState.equals(VmState.RUNNING)) &#123;<BR/><div style="padding-left:25px;<BR/>"> return true;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return false;<BR/> </div>&#125;<BR/></TD>
+      <TD></TD>
+      <TD>true</TD>
+      <TD>vmState.equals(VmState.STOPPED)</TD>
+      <TD>false</TD>
+      <TD>(vmState.equals(VmState.RUNNING))</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>getDeviceIdOnAttachRequirement</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaximumVolumeCount</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>-2</TD>
+      <TD></TD>
+      <TD>-2</TD>
+      <TD></TD>
+      <TD>-2</TD>
+      <TD>AbstractCapabilities.LIMIT_UNKNOWN</TD>
+      <TD>-2</TD>
+      <TD>15</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaximumVolumeProductIOPS</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD></TD>
+      <TD>10000</TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>AbstractCapabilities.LIMIT_UNKNOWN</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Storage<Gigabyte><BR/>getMaximumVolumeSize</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>new Storage<Gigabyte>(5000, Storage.GIGABYTE)</TD>
+      <TD></TD>
+      <TD>new Storage<Gigabyte>(10000, Storage.GIGABYTE)</TD>
+      <TD></TD>
+      <TD>new Storage<Gigabyte>(1024, Storage.GIGABYTE)</TD>
+      <TD>null</TD>
+      <TD>new Storage<Gigabyte>(1024, Storage.GIGABYTE)</TD>
+      <TD>new Storage<Gigabyte>(2000, Storage.GIGABYTE)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMaximumVolumeSizeIOPS</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD></TD>
+      <TD>10000</TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>AbstractCapabilities.LIMIT_UNKNOWN</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMinimumVolumeProductIOPS</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD></TD>
+      <TD>3000</TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>AbstractCapabilities.LIMIT_UNKNOWN</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Storage<Gigabyte><BR/>getMinimumVolumeSize</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>new Storage<Gigabyte>(1, Storage.GIGABYTE)</TD>
+      <TD></TD>
+      <TD>new Storage<Gigabyte>(1, Storage.GIGABYTE)</TD>
+      <TD></TD>
+      <TD>if ((getProvider()).isRackspace()) &#123;<BR/><div style="padding-left:25px;<BR/>"> return new Storage<Gigabyte>(100, Storage.GIGABYTE);<BR/> </div>&#125;<BR/> return new Storage<Gigabyte>(1, Storage.GIGABYTE);<BR/></TD>
+      <TD>new Storage<Gigabyte>(1, Storage.GIGABYTE)</TD>
+      <TD>new Storage<Gigabyte>(1, Storage.GIGABYTE)</TD>
+      <TD>new Storage<Gigabyte>(1, Storage.GIGABYTE)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">int<BR/>getMinimumVolumeSizeIOPS</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD></TD>
+      <TD>3000</TD>
+      <TD></TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>LIMIT_UNKNOWN</TD>
+      <TD>AbstractCapabilities.LIMIT_UNKNOWN</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">String<BR/>getProviderTermForVolume</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>"volume"</TD>
+      <TD></TD>
+      <TD>"disk"</TD>
+      <TD></TD>
+      <TD>"volume"</TD>
+      <TD>"disk"</TD>
+      <TD>"Disk"</TD>
+      <TD>"hard disk"</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">NamingConstraints<BR/>getVolumeNamingConstraints</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 255)</TD>
+      <TD></TD>
+      <TD>NamingConstraints.getAlphaNumeric(1, 63)<BR/>&nbsp;&nbsp;.withRegularExpression("^[a-z][-a-z0-9] {0,61}[a-z0-9]$")<BR/>&nbsp;&nbsp;.lowerCaseOnly()<BR/>&nbsp;&nbsp;.withNoSpaces()<BR/>&nbsp;&nbsp;.withLastCharacterSymbolAllowed(false)<BR/>&nbsp;&nbsp;.constrainedBy('-')</TD>
+      <TD></TD>
+      <TD><font color="red">null</font></TD>
+      <TD><font color="red">null</font></TD>
+      <TD><font color="red">null</font></TD>
+      <TD>NamingConstraints.getAlphaNumeric(5, 50)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>getVolumeProductRequirement</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>((getProvider()).isHP() ? Requirement.NONE : Requirement.OPTIONAL)</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.NONE</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">boolean<BR/>isVolumeSizeDeterminedByProduct</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD></TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+      <TD>false</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<String><BR/>listPossibleDeviceIds</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Cache<String> cache;<BR/> if (platform.isWindows()) &#123;<BR/><div style="padding-left:25px;<BR/>"> cache = Cache.getInstance(getProvider(), "windowsDeviceIds", String.class, CacheLevel.CLOUD);<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> cache = Cache.getInstance(getProvider(), "unixDeviceIds", String.class, CacheLevel.CLOUD);<BR/> </div>&#125;<BR/> Iterable<String> ids = cache.get(getContext());<BR/> if (ids == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> ArrayList<String> list = new ArrayList<String>();<BR/> if (platform.isWindows()) &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add("hde");<BR/> list.add("hdf");<BR/> list.add("hdg");<BR/> list.add("hdh");<BR/> list.add("hdi");<BR/> list.add("hdj");<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add("/dev/xvdc");<BR/> list.add("/dev/xvde");<BR/> list.add("/dev/xvdf");<BR/> list.add("/dev/xvdg");<BR/> list.add("/dev/xvdh");<BR/> list.add("/dev/xvdi");<BR/> list.add("/dev/xvdj");<BR/> </div>&#125;<BR/> ids = Collections.unmodifiableList(list);<BR/> cache.put(getContext(), ids);<BR/> </div>&#125;<BR/> return ids;<BR/></TD>
+      <TD></TD>
+      <TD>if (!platform.isWindows()) &#123;<BR/><div style="padding-left:25px;<BR/>"> if (nonWindowsDevices == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> nonWindowsDevices = Collections.unmodifiableList(Arrays.asList("sdf", "sdg", "sdh", "sdi", "sdj", "sdk", "sdl", "sdm", "sdn", "sdo", "sdp", "sdq", "sdr", "sds", "sdt"));<BR/> </div>&#125;<BR/> return nonWindowsDevices;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> return Collections.emptyList();<BR/> </div>&#125;<BR/></TD>
+      <TD></TD>
+      <TD>ArrayList<String> list = new ArrayList<String>();<BR/> if (platform.isWindows()) &#123;<BR/><div style="padding-left:25px;<BR/>"> if ((getProvider()).isHP())  &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add("/dev/vdf");<BR/> list.add("/dev/vdg");<BR/> list.add("/dev/vdh");<BR/> list.add("/dev/vdi");<BR/> list.add("/dev/vdj");<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add("/dev/xvdf");<BR/> list.add("/dev/xvdg");<BR/> list.add("/dev/xvdh");<BR/> list.add("/dev/xvdi");<BR/> list.add("/dev/xvdj");<BR/> </div>&#125;<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add("/dev/vdf");<BR/> list.add("/dev/vdg");<BR/> list.add("/dev/vdh");<BR/> list.add("/dev/vdi");<BR/> list.add("/dev/vdj");<BR/> </div>&#125;<BR/> return list;<BR/></TD>
+      <TD>List<String> ids = new ArrayList<String>();<BR/> for( int i=5;<BR/> i<10;<BR/> i++) &#123;<BR/><div style="padding-left:25px;<BR/>"> for( int j=0;<BR/> j<10;<BR/> j++) &#123;<BR/><div style="padding-left:25px;<BR/>"> ids.add(i + ":" + j);<BR/> </div>&#125;<BR/> </div>&#125;<BR/> return ids;<BR/></TD>
+      <TD>Cache<String> cache;<BR/> if (platform.isWindows()) &#123;<BR/><div style="padding-left:25px;<BR/>"> cache = Cache.getInstance(getProvider(), "windowsDeviceIds", String.class, CacheLevel.CLOUD);<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> cache = Cache.getInstance(getProvider(), "unixDeviceIds", String.class, CacheLevel.CLOUD);<BR/> </div>&#125;<BR/> Iterable<String> ids = cache.get(getContext());<BR/> if (ids == null) &#123;<BR/><div style="padding-left:25px;<BR/>"> ArrayList<String> list = new ArrayList<String>();<BR/> if (platform.isWindows()) &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add("hda");<BR/> list.add("hdb");<BR/> list.add("hdc");<BR/> list.add("hdd");<BR/> list.add("hde");<BR/> list.add("hdf");<BR/> list.add("hdg");<BR/> list.add("hdh");<BR/> list.add("hdi");<BR/> list.add("hdj");<BR/> </div>&#125;<BR/> else  &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add("sda1");<BR/> list.add("sda2");<BR/> list.add("sda3");<BR/> list.add("sda4");<BR/> list.add("sda5");<BR/> list.add("sda6");<BR/> list.add("sda7");<BR/> list.add("sda8");<BR/> list.add("sda9");<BR/> </div>&#125;<BR/> ids = Collections.unmodifiableList(list);<BR/> cache.put(getContext(), ids);<BR/> </div>&#125;<BR/> return ids;<BR/></TD>
+      <TD>List<String> list = new ArrayList<String>();<BR/> for (Integer i=0;<BR/> i<=15;<BR/> i++)  &#123;<BR/><div style="padding-left:25px;<BR/>"> if (i != 7)  &#123;<BR/><div style="padding-left:25px;<BR/>"> list.add(i.toString());<BR/> </div>&#125;<BR/> </div>&#125;<BR/> return list;<BR/></TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Iterable<VolumeFormat><BR/>listSupportedFormats</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Collections.singletonList(VolumeFormat.BLOCK)</TD>
+      <TD></TD>
+      <TD>Collections.singletonList(VolumeFormat.BLOCK)</TD>
+      <TD></TD>
+      <TD>Collections.singletonList(VolumeFormat.BLOCK)</TD>
+      <TD>Collections.singletonList(VolumeFormat.BLOCK)</TD>
+      <TD>Collections.singletonList(VolumeFormat.BLOCK)</TD>
+      <TD>Collections.singletonList(VolumeFormat.BLOCK)</TD>
+    </TR>    <TR class="GridviewScrollItem">
+      <TD style="background-color:#EFEFEF;">Requirement<BR/>requiresVMOnCreate</TD>
+      <TD></TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD></TD>
+      <TD>Requirement.NONE</TD>
+      <TD>Requirement.OPTIONAL</TD>
+      <TD>Requirement.REQUIRED</TD>
+      <TD>Requirement.REQUIRED</TD>
+    </TR>    </TR>
+  </TABLE>
+</DIV>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      gridviewScrollInit();
+    });
+	
+    function gridviewScrollInit() {
+      BlobStoreCapabilities = $('#BlobStoreCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      CDNCapabilities = $('#CDNCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      ConvergedInfrastructureCapabilities = $('#ConvergedInfrastructureCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      DataCenterCapabilities = $('#DataCenterCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      FirewallCapabilities = $('#FirewallCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      HttpLoadBalancerCapabilities = $('#HttpLoadBalancerCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      IPAddressCapabilities = $('#IPAddressCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      ImageCapabilities = $('#ImageCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      LoadBalancerCapabilities = $('#LoadBalancerCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      RelationalDatabaseCapabilities = $('#RelationalDatabaseCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      ShellKeyCapabilities = $('#ShellKeyCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      SnapshotCapabilities = $('#SnapshotCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      TopologyCapabilities = $('#TopologyCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      VLANCapabilities = $('#VLANCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      VirtualMachineCapabilities = $('#VirtualMachineCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+      VolumeCapabilities = $('#VolumeCapabilities').gridviewScroll({
+        width: 720,
+        height: 800,
+        railcolor: "#F0F0F0",
+        barcolor: "#CDCDCD",
+        barhovercolor: "#606060",
+        bgcolor: "#F0F0F0",
+        freezesize: 1,
+        arrowsize: 30,
+        varrowtopimg: "Images/arrowvt.png",
+        varrowbottomimg: "Images/arrowvb.png",
+        harrowleftimg: "Images/arrowhl.png",
+        harrowrightimg: "Images/arrowhr.png",
+        headerrowcount: 1,
+        railsize: 16,
+        barsize: 8
+      });
+    }
+  </script>
+
+</BODY>
+</HTML>
+
