@@ -5,7 +5,8 @@ To Use:
 
 ##### Step 1:
 Clone the dasein repo's you want to include in the capability scan into the same director producing a ls as such....
-  ```> ls -1
+```
+  > ls -1
   dasein-cloud-atmos
   dasein-cloud-azurearm
   dasein-cloud-azurepack
@@ -28,7 +29,8 @@ Clone the dasein repo's you want to include in the capability scan into the same
   dasein-cloud-vcloud
   dasein-cloud-virtustream
   dasein-cloud-vsphere
-  dasein-cloud-zimory```
+  dasein-cloud-zimory
+```
 
 
 ##### Step 2:
