@@ -3,8 +3,9 @@ Parses dasein cloud implementations and creates a html capability matrix.
 
 To Use:
 
-Step 1:
+##### Step 1:
 Clone the dasein repo's you want to include in the capability scan into the same director producing a ls as such....
+  ```> ls -1
   dasein-cloud-atmos
   dasein-cloud-azurearm
   dasein-cloud-azurepack
@@ -27,9 +28,10 @@ Clone the dasein repo's you want to include in the capability scan into the same
   dasein-cloud-vcloud
   dasein-cloud-virtustream
   dasein-cloud-vsphere
-  dasein-cloud-zimory
+  dasein-cloud-zimory```
 
-Step 2:
+
+##### Step 2:
 ./capaoilityScanner.pl > daseinCapabilities.html
 
 You will need to copy GridviewScroll.css, gridviewScroll.min.js, and the Images directory and its content to the directory where you end up homing daseinCapabilities.html
